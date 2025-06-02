@@ -13,7 +13,7 @@ async function ObtenerPersonas(){
 }
 
 //crear funcion que creara las filas de la tabla en base a los registros que vinen de la API
-function CrearTabla(){ //Datos que representa a el JSON que viene De la API
+function CrearTabla(datos){ //Datos que representa a el JSON que viene De la API
     //se llama "tbody" denytro de la tabla con id "tabla"
 
     const tabla = document.querySelector("#tabla tbody");

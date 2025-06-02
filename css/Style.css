@@ -1,0 +1,22 @@
+.add-button{
+position: fixed; /*esto hace que el boton sea flotante y al bajar no se mueva su pocision y quede fijo*/
+
+bottom: 30px;  /*separacion de el boton con el borde inferior*/
+right: 35px; /*separacion desde la derecha*/
+background-color: green; /*color de fondo de el boton*/
+border: none; /*para que el boton no tenga bordes*/
+border-radius: 50%; /*para que el boton sea redondo*/
+width: 70px;
+height: 70px; /*Esto hace que el boton sea simetrico y quede desde el mismo nivel y que no se vea feo*/
+display: flex;
+justify-content: center; /*alineacion horizontal*/
+align-items: center; /*para alinear el item de vertical*/
+box-shadow:  0 4px 10px rgba(0,0,0,0.5); /*para añadirle sombreado y el color de la sombra*/
+z-index: 1001; /*para que el boton siempre quede encima de todo*/
+transition: transform 0.3s;
+}
+
+.add-button:hover{
+transform: scale(1.1); /*El boton se hace mas grande 1.1 veces su tamaño para cuando pasamos el mouse*/
+
+}
