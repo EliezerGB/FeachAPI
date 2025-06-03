@@ -20,3 +20,9 @@ transition: transform 0.3s;
 transform: scale(1.1); /*El boton se hace mas grande 1.1 veces su tamaño para cuando pasamos el mouse*/
 
 }
+
+.tabla-scroll{
+overflow-x: auto; /*Scroll horizontal*/
+
+
+}
