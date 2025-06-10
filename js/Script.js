@@ -30,7 +30,7 @@ function CrearTabla(datos){ //Datos que representa a el JSON que viene De la API
                     <td>${persona.correo}</td>
 
                     <td>
-                            <button>Editar</button>
+                            <button onClick="AbrirModalEditar(${persona.id}, '${persona.nombre}', '${persona.apellido}', ${persona.edad}, '${persona.correo}')">Editar</button>
                             <button onClick="EliminarRegistro(${persona.id})">Eliminar</button>
                     </td>
                 </tr>
@@ -112,3 +112,58 @@ async function EliminarRegistro(id){ //se pide el id para poder borrar segun su 
     }
 
 }
+
+
+//proceso para editar el registro
+const modalEditar = document.getElementById("modalEditar");
+const btnCerrarEditar = document.getElementById("btnCerrarEditar");
+
+//EventListener para cerrar el modal de editar 
+btnCerrarEditar.addEventListener("click", ()=>{
+    modalEditar.close(); //cerrar modal
+});
+
+//para abrir el formulario de editar registro
+function AbrirModalEditar(id, nombre , apellido , edad , correo){
+    document.getElementById("nombreEditar").value = nombre;
+    document.getElementById("apellidoEditar").value = apellido;
+    document.getElementById("emailEditar").value = correo;
+    document.getElementById("edadEditar").value = edad;
+    document.getElementById("idEditar").value = id; //este es el oculto pero que siempre esta presente 
+
+    modalEditar.showModal(); //para poder enseñar ya el formulario y se abre cuando los valores esten ingresados
+
+}
+
+
+document.getElementById("frmEditarIntegrante").addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const id = document.getElementById("idEditar").value;
+    const nombre = document.getElementById("nombreEditar").value.trim();
+    const apellido = document.getElementById("apellidoEditar").value.trim();
+    const correo = document.getElementById("emailEditar").value.trim();
+    const edad = document.getElementById("edadEditar").value.trim();
+
+    //validar que los campos este bien
+    if(!nombre || !apellido || !edad || !correo || !id){
+        alert("Complete todos los campos por favor");
+        return;
+    }
+
+    const respuesta =  await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({edad,correo,nombre,apellido})
+    });
+
+    if(respuesta.ok){
+        alert("Registro actualizado correctamente 😁");
+        modalEditar.close(); //cerramos el modal
+        ObtenerPersonas();//recargamos la lista o la tabla como usted le diga 
+        
+    }
+    else{
+        alert("Error al actualizar");
+    }
+});  

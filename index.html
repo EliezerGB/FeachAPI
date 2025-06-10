@@ -35,14 +35,12 @@
             <table id="tabla">
                 <thead>
                     <tr>
-                        <th>
-                            <th>ID</th>
+                        <th>ID</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Edad</th>
                             <th>Correo Electronico</th>
                             <th>Acciones</th>
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,6 +81,27 @@
                 <input type="text" id="apellido" placeholder="Apellido" required>
                 <input type="email" id="email" placeholder="Correo electrónico" required>
                 <input type="number" placeholder="Edad" id="edad" required>
+                <button type="submit" class="contrast">Guardar</button>
+
+                
+            </form>
+        </article>
+    </dialog>
+
+    <!--modal para editar-->
+    <dialog id="modalEditar">
+        <article>
+            <header>
+                <a href="#" class="close" id="btnCerrarEditar"></a>
+                <h3>Editar Integrante de el equipo PTC</h3>
+
+            </header>
+            <form id="frmEditarIntegrante">
+                <input type="hidden"  id="idEditar">
+                <input type="text" id="nombreEditar" placeholder="Nombre" required>
+                <input type="text" id="apellidoEditar" placeholder="Apellido" required>
+                <input type="email" id="emailEditar" placeholder="Correo electrónico" required>
+                <input type="number" placeholder="Edad" id="edadEditar" required>
                 <button type="submit" class="contrast">Guardar</button>
 
                 
